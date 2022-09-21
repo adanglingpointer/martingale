@@ -110,7 +110,7 @@ function myFunction() {
           if (oddOrEven == "even") {
             currentBankroll = currentBankroll + (currentWager * 2);
             document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $" + currentBankroll + " in your bankroll!";
-            currentWager = document.querySelector("#wager").value;
+            currentWager = Number(document.querySelector("#wager").value);
           } else if (oddOrEven != "even") {
             currentWager = currentWager * 2;
             document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
@@ -127,7 +127,7 @@ function myFunction() {
               } else if (oddOrEven == "even") {
                 currentBankroll = currentBankroll + (currentWager * 2);
                 document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $ " + currentBankroll + " in your bankroll!";
-                currentWager = document.querySelector("#wager").value;
+                currentWager = Number(document.querySelector("#wager").value);
               }
               spinCycle = oddOrEven;
             }
@@ -138,7 +138,7 @@ function myFunction() {
           if (oddOrEven == "odd") {
             currentBankroll = currentBankroll + (currentWager * 2);
             document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $" + currentBankroll + " in your bankroll!";
-            currentWager = document.querySelector("#wager").value;
+            currentWager = Number(document.querySelector("#wager").value);
           } else if (oddOrEven != "odd") {
             currentWager = currentWager * 2;
             document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
@@ -151,11 +151,11 @@ function myFunction() {
               document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "You bet " + currentWager + " on odd..";
               if (oddOrEven != "odd") {
                 document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
-                currentwager = currentWager * 2;
+                currentWager = currentWager * 2;
               } else if (oddOrEven == "odd") {
                 currentBankroll = currentBankroll + (currentWager * 2);
                 document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $ " + currentBankroll + " in your bankroll!";
-                currentWager = document.querySelector("#wager").value;
+                currentWager = Number(document.querySelector("#wager").value);
               }
               spinCycle = oddOrEven;
             }
