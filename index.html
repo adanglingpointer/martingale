@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Martingale Calculator</title>
+  <link rel="stylesheet" href="css/master.css">
+</head>
+
+<body>
+  <div id="heading">
+    <h1 class="headingtxt">Martingale Calculator</h1>
+  </div>
+  <div id="description">
+    <p class="descriptiontxt">The Martingale is a method of betting that relies on a very simple premis: every time you lose, you double down.</p>
+    <p class="descriptiontxt">In the world of infinite money, this means that one could reliably depend on winning as long as they double down on their loss each time until they eventually win.</p>
+    <p class="descriptiontxt">Unfortunately, money is limited, and casinos put betting limits on games.  However, this doesn't mean that a reliable Martingale method can not still be applied.  How?  By betting in a favorable position, every time.</p>
+    <p class="descriptiontxt">In the case of roulette, one can simply wait for a bet to come out thrice before betting on the opposite.  For example, if black hits three times in a row, then we can bet the minimum bet on red for the fourth spin.  This provides us the statistical benefit of the Martingale method while risking a fraction of the wager.</p>
+  </div>
+  <div id="main">
+    <p class="maintxt">
+      <label for="wage">Wager $:</label>
+      <input type="text" id="wager" name="wager" value="5">
+      <label for="bankroll">Bankroll $:</label>
+      <input type="text" id="bankroll" name="bankroll" value="155">
+      <label for="time">Minutes Between Spins:</label>
+      <input type="text" id="time" name="time" value="1">
+      <label for="doubledown">Times To Double Down:</label>
+      <input type="text" id="doubledown" name="doubledown" value="5">
+      <label for="wait">Times To Wait For Duplicate Before Betting:</label>
+      <input type="text" id="wait" name="wait" value="2">
+      <label for="goal">Goal $:</label>
+      <input type="text" id="goal" name="goal" value="1000000">
+      <button type="button" name="button" onclick="myFunction()">Go</button>
+    </p>
+  </div>
+  <div id="results">
+    <p class="resultstxt">Results: </p>
+  </div>
+  <script src="index.js" charset="utf-8"></script>
+</body>
+
+</html>

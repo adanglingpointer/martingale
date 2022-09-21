@@ -1,0 +1,15 @@
+body {
+  font-family: verdana;
+  text-align: center;
+}
+
+#description {
+  text-align: left;
+  padding: 22px;
+  line-height: 24px;
+}
+
+.headingtxt {
+  font-style: italic;
+  font-size: 4vh;
+}
