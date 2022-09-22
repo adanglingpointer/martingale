@@ -35,7 +35,7 @@ function myFunction() {
   lspaceColor = spaceColor;
 
   //add first spin to the results
-  document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + spinResult + " " + oddOrEven + " " + highOrLow + " " + spaceColor;
+  // document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + spinResult + " " + oddOrEven + " " + highOrLow + " " + spaceColor;
 
   //spin until we hit min duplicates before we start betting
   dupResults = minSpins();
@@ -44,7 +44,7 @@ function myFunction() {
 
       spinResult = aSpin();
 
-      document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + spinResult + " " + oddOrEven + " " + highOrLow + " " + spaceColor;
+      // document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + spinResult + " " + oddOrEven + " " + highOrLow + " " + spaceColor;
 
 
 
@@ -101,6 +101,16 @@ function myFunction() {
   currentWager = Number(document.querySelector("#wager").value);
 
   while (currentBankroll > currentWager) {
+
+    if (dupoddOrEven >= duphighOrLow) {
+      betOnThe = "oddeven";
+    } else if (duphighOrLow > dupoddOrEven) {
+      betOnThe = "highlow";
+    }
+    if (dupspaceColor > duphighOrLow && dupspaceColor > dupoddOrEven) {
+      betOnThe = "redblack";
+    }
+
     var spinCycle = "soapy";
     currentBankroll = currentBankroll - currentWager;
     switch (betOnThe) {
@@ -179,8 +189,9 @@ function myFunction() {
                 break;
               }
               currentBankroll = currentBankroll - currentWager;
-              spinResult = aSpin();
               document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "You bet " + currentWager + " on even..";
+              spinResult = aSpin();
+              // document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "You bet " + currentWager + " on even..";
               if (oddOrEven != "even") {
                 document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
                 currentWager = currentWager * 2;
@@ -323,8 +334,9 @@ function myFunction() {
                 break;
               }
               currentBankroll = currentBankroll - currentWager;
-              spinResults = aSpin();
               document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "You bet " + currentWager + " on odd..";
+              spinResults = aSpin();
+              // document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "You bet " + currentWager + " on odd..";
               if (oddOrEven != "odd") {
                 document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
                 currentWager = currentWager * 2;
@@ -403,7 +415,7 @@ function myFunction() {
         break;
 
     } //end switch
-    minSpins();
+    dupResults = minSpins();
 
   } //end while (currentBankroll > currentWager)
 
@@ -526,7 +538,7 @@ function myFunction() {
         spaceColor = "black";
         break;
       case 21:
-        oddOrEven = "even";
+        oddOrEven = "odd";
         highOrLow = "high";
         spaceColor = "black";
         break;
@@ -536,7 +548,7 @@ function myFunction() {
         spaceColor = "black";
         break;
       case 23:
-        oddOrEven = "even";
+        oddOrEven = "odd";
         highOrLow = "high";
         spaceColor = "black";
         break;
@@ -556,7 +568,7 @@ function myFunction() {
         spaceColor = "black";
         break;
       case 27:
-        oddOrEven = "even";
+        oddOrEven = "odd";
         highOrLow = "high";
         spaceColor = "black";
         break;
@@ -576,7 +588,7 @@ function myFunction() {
         spaceColor = "black";
         break;
       case 31:
-        oddOrEven = "even";
+        oddOrEven = "odd";
         highOrLow = "high";
         spaceColor = "black";
         break;
@@ -586,7 +598,7 @@ function myFunction() {
         spaceColor = "black";
         break;
       case 33:
-        oddOrEven = "even";
+        oddOrEven = "odd";
         highOrLow = "high";
         spaceColor = "black";
         break;
@@ -596,7 +608,7 @@ function myFunction() {
         spaceColor = "black";
         break;
       case 35:
-        oddOrEven = "even";
+        oddOrEven = "odd";
         highOrLow = "high";
         spaceColor = "black";
         break;
@@ -618,6 +630,7 @@ function myFunction() {
       default:
         break;
     }
+    document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + spinResult + " " + oddOrEven + " " + highOrLow + " " + spaceColor;
     return spinResult;
   }
 
