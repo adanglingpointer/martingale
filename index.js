@@ -3,28 +3,52 @@ function myFunction() {
   //we reset so that we can re-run
   document.querySelector(".resultstxt").innerHTML = "Results: <br>";
 
-  var randomNumber = 0;
-  var spinResult = "0";
-  var lastResult = 0;
+  // var randomNumber = 0;
+  // var spinResult = "0";
+  // var lastResult = 0;
+  // var dupResults = 0;
+  // var oddOrEven = "odd";
+  // var loddOrEven = 0;
+  // var dupoddOrEven = 0;
+  // var highOrLow = "low";
+  // var lhighOrLow = 0;
+  // var duphighOrLow = 0;
+  // var spaceColor = "red";
+  // var lspaceColor = 0;
+  // var dupspaceColor = 0;
+  // var originalWager = 5;
+  // var currentWager = 5;
+  // var theBankroll = 155;
+  // var currentBankroll = 155;
+  // var timesToWait = 2;
+  // var highestDup = 0;
+
+  var randomNumber;
+  var spinResult;
+  var lastResult;
   var dupResults = 0;
-  var oddOrEven = "odd";
-  var loddOrEven = 0;
-  var dupoddOrEven = 0;
-  var highOrLow = "low";
-  var lhighOrLow = 0;
-  var duphighOrLow = 0;
-  var spaceColor = "red";
-  var lspaceColor = 0;
-  var dupspaceColor = 0;
-  var originalWager = 5;
-  var currentWager = 5;
-  var theBankroll = 155;
-  var currentBankroll = 155;
+  var oddOrEven;
+  var loddOrEven;
+  var dupoddOrEven;
+  var highOrLow;
+  var lhighOrLow;
+  var duphighOrLow;
+  var spaceColor;
+  var lspaceColor;
+  var dupspaceColor;
+  var originalWager;
+  // var currentWager;
+  // var theBankroll = 155;
+  // var currentBankroll = 155;
   var timesToWait = 2;
   var highestDup = 0;
 
   originalWager = Number(document.querySelector("#wager").value);
-  theBankroll = Number(document.querySelector("#bankroll").value);
+
+  if (typeof theBankroll !== 'undefined') {
+    // the variable is defined
+  } else {
+  var theBankroll = Number(document.querySelector("#bankroll").value); }
   timesToWait = Number(document.querySelector("#wait").value);
 
   //make first spin
@@ -34,18 +58,12 @@ function myFunction() {
   lhighOrLow = highOrLow;
   lspaceColor = spaceColor;
 
-  //add first spin to the results
-  // document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + spinResult + " " + oddOrEven + " " + highOrLow + " " + spaceColor;
-
   //spin until we hit min duplicates before we start betting
   dupResults = minSpins();
   function minSpins() {
     while (dupResults < (timesToWait - 1)) {
 
       spinResult = aSpin();
-
-      // document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + spinResult + " " + oddOrEven + " " + highOrLow + " " + spaceColor;
-
 
 
       if (loddOrEven == oddOrEven) {
@@ -97,8 +115,19 @@ function myFunction() {
     betOnThe = "redblack";
   }
 
-  currentBankroll = Number(document.querySelector("#bankroll").value);
-  currentWager = Number(document.querySelector("#wager").value);
+  // currentBankroll = Number(document.querySelector("#bankroll").value);
+  if (typeof currentBankroll !== 'undefined') {
+    // the variable is defined
+  } else {
+  var currentBankroll = Number(document.querySelector("#bankroll").value); }
+
+  if (typeof currentWager !== 'undefined') {
+    // the variable is defined
+  } else {
+  var currentWager = Number(document.querySelector("#wager").value); }
+
+
+  // currentWager = Number(document.querySelector("#wager").value);
 
   while (currentBankroll > currentWager) {
 
