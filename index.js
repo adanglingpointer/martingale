@@ -38,49 +38,51 @@ function myFunction() {
   document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + spinResult + " " + oddOrEven + " " + highOrLow + " " + spaceColor;
 
   //spin until we hit min duplicates before we start betting
-  while (dupResults < (timesToWait - 1)) {
+  dupResults = minSpins();
+  function minSpins() {
+    while (dupResults < (timesToWait - 1)) {
 
-    spinResult = aSpin();
+      spinResult = aSpin();
 
-    document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + spinResult + " " + oddOrEven + " " + highOrLow + " " + spaceColor;
+      document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + spinResult + " " + oddOrEven + " " + highOrLow + " " + spaceColor;
 
 
 
-    if (loddOrEven == oddOrEven) {
-      dupoddOrEven++;
-    } else if (loddOrEven != oddOrEven) {
-      dupoddOrEven = 0;
+      if (loddOrEven == oddOrEven) {
+        dupoddOrEven++;
+      } else if (loddOrEven != oddOrEven) {
+        dupoddOrEven = 0;
+      }
+
+      if (lhighOrLow == highOrLow) {
+        duphighOrLow++;
+      } else if (lhighOrLow != highOrLow) {
+        duphighOrLow = 0;
+      }
+
+      if (lspaceColor == spaceColor) {
+        dupspaceColor++;
+      } else if (lspaceColor != spaceColor) {
+        dupspaceColor = 0;
+      }
+
+      if (dupoddOrEven >= duphighOrLow) {
+        highestDup = dupoddOrEven;
+      } else if (duphighOrLow > dupoddOrEven) {
+        highestDup = duphighOrLow;
+      }
+
+      if (dupspaceColor > highestDup) {
+        highestDup = dupspaceColor;
+      }
+
+      loddOrEven = oddOrEven;
+      lhighOrLow = highOrLow;
+      lspaceColor = spaceColor;
+
+      dupResults = highestDup;
     }
-
-    if (lhighOrLow == highOrLow) {
-      duphighOrLow++;
-    } else if (lhighOrLow != highOrLow) {
-      duphighOrLow = 0;
-    }
-
-    if (lspaceColor == spaceColor) {
-      dupspaceColor++;
-    } else if (lspaceColor != spaceColor) {
-      dupspaceColor = 0;
-    }
-
-    if (dupoddOrEven >= duphighOrLow) {
-      highestDup = dupoddOrEven;
-    } else if (duphighOrLow > dupoddOrEven) {
-      highestDup = duphighOrLow;
-    }
-
-    if (dupspaceColor > highestDup) {
-      highestDup = dupspaceColor;
-    }
-
-    loddOrEven = oddOrEven;
-    lhighOrLow = highOrLow;
-    lspaceColor = spaceColor;
-
-    dupResults = highestDup;
-
-
+    return dupResults;
   }
 
   //on to next step: start betting
@@ -111,8 +113,66 @@ function myFunction() {
             currentBankroll = currentBankroll + (currentWager * 2);
             document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $" + currentBankroll + " in your bankroll!";
             currentWager = Number(document.querySelector("#wager").value);
+
+            if (loddOrEven == oddOrEven) {
+              dupoddOrEven++;
+            } else if (loddOrEven != oddOrEven) {
+              dupoddOrEven = 0;
+            }
+            if (lhighOrLow == highOrLow) {
+              duphighOrLow++;
+            } else if (lhighOrLow != highOrLow) {
+              duphighOrLow = 0;
+            }
+            if (lspaceColor == spaceColor) {
+              dupspaceColor++;
+            } else if (lspaceColor != spaceColor) {
+              dupspaceColor = 0;
+            }
+            if (dupoddOrEven >= duphighOrLow) {
+              highestDup = dupoddOrEven;
+            } else if (duphighOrLow > dupoddOrEven) {
+              highestDup = duphighOrLow;
+            }
+            if (dupspaceColor > highestDup) {
+              highestDup = dupspaceColor;
+            }
+            loddOrEven = oddOrEven;
+            lhighOrLow = highOrLow;
+            lspaceColor = spaceColor;
+            dupResults = highestDup;
+
           } else if (oddOrEven != "even") {
             currentWager = currentWager * 2;
+
+            if (loddOrEven == oddOrEven) {
+              dupoddOrEven++;
+            } else if (loddOrEven != oddOrEven) {
+              dupoddOrEven = 0;
+            }
+            if (lhighOrLow == highOrLow) {
+              duphighOrLow++;
+            } else if (lhighOrLow != highOrLow) {
+              duphighOrLow = 0;
+            }
+            if (lspaceColor == spaceColor) {
+              dupspaceColor++;
+            } else if (lspaceColor != spaceColor) {
+              dupspaceColor = 0;
+            }
+            if (dupoddOrEven >= duphighOrLow) {
+              highestDup = dupoddOrEven;
+            } else if (duphighOrLow > dupoddOrEven) {
+              highestDup = duphighOrLow;
+            }
+            if (dupspaceColor > highestDup) {
+              highestDup = dupspaceColor;
+            }
+            loddOrEven = oddOrEven;
+            lhighOrLow = highOrLow;
+            lspaceColor = spaceColor;
+            dupResults = highestDup;
+
             document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
             while (spinCycle != "even") {
               if (currentWager > currentBankroll) {
@@ -124,10 +184,68 @@ function myFunction() {
               if (oddOrEven != "even") {
                 document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
                 currentWager = currentWager * 2;
+
+                if (loddOrEven == oddOrEven) {
+                  dupoddOrEven++;
+                } else if (loddOrEven != oddOrEven) {
+                  dupoddOrEven = 0;
+                }
+                if (lhighOrLow == highOrLow) {
+                  duphighOrLow++;
+                } else if (lhighOrLow != highOrLow) {
+                  duphighOrLow = 0;
+                }
+                if (lspaceColor == spaceColor) {
+                  dupspaceColor++;
+                } else if (lspaceColor != spaceColor) {
+                  dupspaceColor = 0;
+                }
+                if (dupoddOrEven >= duphighOrLow) {
+                  highestDup = dupoddOrEven;
+                } else if (duphighOrLow > dupoddOrEven) {
+                  highestDup = duphighOrLow;
+                }
+                if (dupspaceColor > highestDup) {
+                  highestDup = dupspaceColor;
+                }
+                loddOrEven = oddOrEven;
+                lhighOrLow = highOrLow;
+                lspaceColor = spaceColor;
+                dupResults = highestDup;
+
               } else if (oddOrEven == "even") {
                 currentBankroll = currentBankroll + (currentWager * 2);
                 document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $ " + currentBankroll + " in your bankroll!";
                 currentWager = Number(document.querySelector("#wager").value);
+
+                if (loddOrEven == oddOrEven) {
+                  dupoddOrEven++;
+                } else if (loddOrEven != oddOrEven) {
+                  dupoddOrEven = 0;
+                }
+                if (lhighOrLow == highOrLow) {
+                  duphighOrLow++;
+                } else if (lhighOrLow != highOrLow) {
+                  duphighOrLow = 0;
+                }
+                if (lspaceColor == spaceColor) {
+                  dupspaceColor++;
+                } else if (lspaceColor != spaceColor) {
+                  dupspaceColor = 0;
+                }
+                if (dupoddOrEven >= duphighOrLow) {
+                  highestDup = dupoddOrEven;
+                } else if (duphighOrLow > dupoddOrEven) {
+                  highestDup = duphighOrLow;
+                }
+                if (dupspaceColor > highestDup) {
+                  highestDup = dupspaceColor;
+                }
+                loddOrEven = oddOrEven;
+                lhighOrLow = highOrLow;
+                lspaceColor = spaceColor;
+                dupResults = highestDup;
+
               }
               spinCycle = oddOrEven;
             }
@@ -139,8 +257,66 @@ function myFunction() {
             currentBankroll = currentBankroll + (currentWager * 2);
             document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $" + currentBankroll + " in your bankroll!";
             currentWager = Number(document.querySelector("#wager").value);
+
+            if (loddOrEven == oddOrEven) {
+              dupoddOrEven++;
+            } else if (loddOrEven != oddOrEven) {
+              dupoddOrEven = 0;
+            }
+            if (lhighOrLow == highOrLow) {
+              duphighOrLow++;
+            } else if (lhighOrLow != highOrLow) {
+              duphighOrLow = 0;
+            }
+            if (lspaceColor == spaceColor) {
+              dupspaceColor++;
+            } else if (lspaceColor != spaceColor) {
+              dupspaceColor = 0;
+            }
+            if (dupoddOrEven >= duphighOrLow) {
+              highestDup = dupoddOrEven;
+            } else if (duphighOrLow > dupoddOrEven) {
+              highestDup = duphighOrLow;
+            }
+            if (dupspaceColor > highestDup) {
+              highestDup = dupspaceColor;
+            }
+            loddOrEven = oddOrEven;
+            lhighOrLow = highOrLow;
+            lspaceColor = spaceColor;
+            dupResults = highestDup;
+
           } else if (oddOrEven != "odd") {
             currentWager = currentWager * 2;
+
+            if (loddOrEven == oddOrEven) {
+              dupoddOrEven++;
+            } else if (loddOrEven != oddOrEven) {
+              dupoddOrEven = 0;
+            }
+            if (lhighOrLow == highOrLow) {
+              duphighOrLow++;
+            } else if (lhighOrLow != highOrLow) {
+              duphighOrLow = 0;
+            }
+            if (lspaceColor == spaceColor) {
+              dupspaceColor++;
+            } else if (lspaceColor != spaceColor) {
+              dupspaceColor = 0;
+            }
+            if (dupoddOrEven >= duphighOrLow) {
+              highestDup = dupoddOrEven;
+            } else if (duphighOrLow > dupoddOrEven) {
+              highestDup = duphighOrLow;
+            }
+            if (dupspaceColor > highestDup) {
+              highestDup = dupspaceColor;
+            }
+            loddOrEven = oddOrEven;
+            lhighOrLow = highOrLow;
+            lspaceColor = spaceColor;
+            dupResults = highestDup;
+
             document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
             while (spinCycle != "odd") {
               if (currentWager > currentBankroll) {
@@ -152,10 +328,68 @@ function myFunction() {
               if (oddOrEven != "odd") {
                 document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
                 currentWager = currentWager * 2;
+
+                if (loddOrEven == oddOrEven) {
+                  dupoddOrEven++;
+                } else if (loddOrEven != oddOrEven) {
+                  dupoddOrEven = 0;
+                }
+                if (lhighOrLow == highOrLow) {
+                  duphighOrLow++;
+                } else if (lhighOrLow != highOrLow) {
+                  duphighOrLow = 0;
+                }
+                if (lspaceColor == spaceColor) {
+                  dupspaceColor++;
+                } else if (lspaceColor != spaceColor) {
+                  dupspaceColor = 0;
+                }
+                if (dupoddOrEven >= duphighOrLow) {
+                  highestDup = dupoddOrEven;
+                } else if (duphighOrLow > dupoddOrEven) {
+                  highestDup = duphighOrLow;
+                }
+                if (dupspaceColor > highestDup) {
+                  highestDup = dupspaceColor;
+                }
+                loddOrEven = oddOrEven;
+                lhighOrLow = highOrLow;
+                lspaceColor = spaceColor;
+                dupResults = highestDup;
+
               } else if (oddOrEven == "odd") {
                 currentBankroll = currentBankroll + (currentWager * 2);
                 document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $ " + currentBankroll + " in your bankroll!";
                 currentWager = Number(document.querySelector("#wager").value);
+
+                if (loddOrEven == oddOrEven) {
+                  dupoddOrEven++;
+                } else if (loddOrEven != oddOrEven) {
+                  dupoddOrEven = 0;
+                }
+                if (lhighOrLow == highOrLow) {
+                  duphighOrLow++;
+                } else if (lhighOrLow != highOrLow) {
+                  duphighOrLow = 0;
+                }
+                if (lspaceColor == spaceColor) {
+                  dupspaceColor++;
+                } else if (lspaceColor != spaceColor) {
+                  dupspaceColor = 0;
+                }
+                if (dupoddOrEven >= duphighOrLow) {
+                  highestDup = dupoddOrEven;
+                } else if (duphighOrLow > dupoddOrEven) {
+                  highestDup = duphighOrLow;
+                }
+                if (dupspaceColor > highestDup) {
+                  highestDup = dupspaceColor;
+                }
+                loddOrEven = oddOrEven;
+                lhighOrLow = highOrLow;
+                lspaceColor = spaceColor;
+                dupResults = highestDup;
+
               }
               spinCycle = oddOrEven;
             }
@@ -169,6 +403,7 @@ function myFunction() {
         break;
 
     } //end switch
+    minSpins();
 
   } //end while (currentBankroll > currentWager)
 
