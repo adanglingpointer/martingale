@@ -1,44 +1,73 @@
 function myFunction() {
 
-
+  if (typeof currentBankroll !== 'undefined') {
+    if (currentBankroll < 5) {
+      return;
+    }
+  }
 
   //we reset so that we can re-run
   document.querySelector(".resultstxt").innerHTML = "Results: <br>";
 
-  var randomNumber = 0;
-  var spinResult = "0";
-  var lastResult = 0;
+  // var randomNumber = 0;
+  // var spinResult = "0";
+  // var lastResult = 0;
+  // var dupResults = 0;
+  // var oddOrEven = "odd";
+  // var loddOrEven = 0;
+  // var dupoddOrEven = 0;
+  // var highOrLow = "low";
+  // var lhighOrLow = 0;
+  // var duphighOrLow = 0;
+  // var spaceColor = "red";
+  // var lspaceColor = 0;
+  // var dupspaceColor = 0;
+  // var originalWager = 5;
+  // var currentWager = 5;
+  // var theBankroll = 155;
+  // var currentBankroll = 155;
+  // var timesToWait = 2;
+  // var highestDup = 0;
+
+  var randomNumber;
+  var spinResult;
+  var lastResult;
   var dupResults = 0;
-  var oddOrEven = "bodd";
-  var loddOrEven = "rodd";
-  var dupoddOrEven = 0;
-  var highOrLow = "glow";
-  var lhighOrLow = "flow";
-  var duphighOrLow = 0;
-  var spaceColor = "gred";
-  var lspaceColor = "bred";
-  var dupspaceColor = 0;
-  var originalWager = 5;
-  var currentWager = 5;
-  var theBankroll = 155;
-  var currentBankroll = 155;
+  var oddOrEven;
+  var loddOrEven;
+  var dupoddOrEven;
+  var highOrLow;
+  var lhighOrLow;
+  var duphighOrLow;
+  var spaceColor;
+  var lspaceColor;
+  var dupspaceColor;
+  var originalWager;
+  // var currentWager;
+  // var theBankroll = 155;
+  // var currentBankroll = 155;
   var timesToWait = 2;
   var highestDup = 0;
-  var nSpins = 0;
-  var theGoal = Number(document.querySelector("#goal").value);
 
   originalWager = Number(document.querySelector("#wager").value);
-  currentWager = originalWager;
 
-  theBankroll = Number(document.querySelector("#bankroll").value);
-  currentBankroll = theBankroll;
+  if (typeof theBankroll !== 'undefined') {
+    // the variable is defined
+  } else {
+  var theBankroll = Number(document.querySelector("#bankroll").value); }
   timesToWait = Number(document.querySelector("#wait").value);
 
-
   //make first spin
-
-
-
+  if (typeof currentBankroll !== 'undefined') {
+    if (currentBankroll < 5) {
+      return;
+    }
+  }
+  if (typeof currentBankroll !== 'undefined') {
+    if (currentBankroll < 5) {
+      return;
+    }
+  }
   spinResult = aSpin();
 
   loddOrEven = oddOrEven;
@@ -47,16 +76,20 @@ function myFunction() {
 
   //spin until we hit min duplicates before we start betting
   dupResults = minSpins();
-
   function minSpins() {
-if (nSpins>500){return;}
-if (currentBankroll >= theGoal) {return;}
 
-
+    if (typeof currentBankroll !== 'undefined') {
+      if (currentBankroll < 5) {
+        return;
+      }
+    }
 
     while (dupResults < (timesToWait - 1)) {
-
-
+      if (typeof currentBankroll !== 'undefined') {
+        if (currentBankroll < 5) {
+          return;
+        }
+      }
       spinResult = aSpin();
 
 
@@ -97,11 +130,6 @@ if (currentBankroll >= theGoal) {return;}
     return dupResults;
   }
 
-theHorse();
-
-function theHorse() {
-if (nSpins>500){return;}
-if (currentBankroll >= theGoal) {return;}
   //on to next step: start betting
   var betOnThe = "horse";
 
@@ -114,12 +142,27 @@ if (currentBankroll >= theGoal) {return;}
     betOnThe = "redblack";
   }
 
+  // currentBankroll = Number(document.querySelector("#bankroll").value);
+  if (typeof currentBankroll !== 'undefined') {
+    // the variable is defined
+  } else {
+  var currentBankroll = Number(document.querySelector("#bankroll").value); }
+
+  if (typeof currentWager !== 'undefined') {
+    // the variable is defined
+  } else {
+  var currentWager = Number(document.querySelector("#wager").value); }
+
+
+  // currentWager = Number(document.querySelector("#wager").value);
 
   while (currentBankroll > 0) {
 
-if (nSpins>500){return;}
-if (currentBankroll >= theGoal) {return;}
-
+    if (typeof currentBankroll !== 'undefined') {
+      if (currentBankroll < 5) {
+        return;
+      }
+    }
 
     if (dupoddOrEven >= duphighOrLow) {
       betOnThe = "oddeven";
@@ -131,17 +174,16 @@ if (currentBankroll >= theGoal) {return;}
     }
 
     var spinCycle = "soapy";
-
+    currentBankroll = currentBankroll - currentWager;
     switch (betOnThe) {
 
       case "oddeven":
-      currentBankroll = currentBankroll - currentWager;
         if (oddOrEven == "odd") {
-
-            if (currentBankroll < 1) {
+          if (typeof currentBankroll !== 'undefined') {
+            if (currentBankroll < 5) {
               return;
             }
-
+          }
           document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "You bet " + currentWager + " on even..";
           spinResult = aSpin();
           if (oddOrEven == "even") {
@@ -178,7 +220,7 @@ if (currentBankroll >= theGoal) {return;}
             dupResults = highestDup;
 
           } else if (oddOrEven != "even") {
-
+            currentWager = currentWager * 2;
 
             if (loddOrEven == oddOrEven) {
               dupoddOrEven++;
@@ -208,35 +250,95 @@ if (currentBankroll >= theGoal) {return;}
             lspaceColor = spaceColor;
             dupResults = highestDup;
 
+            document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
             while (spinCycle != "even") {
-              currentWager = currentWager * 2;
               if (currentWager > currentBankroll) {
-                return;
+                break;
               }
-
-                // if (currentBankroll < 5) {
-                //   return;
-                // }
-
-              document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
+              if (typeof currentBankroll !== 'undefined') {
+                if (currentBankroll < 5) {
+                  return;
+                }
+              }
               currentBankroll = currentBankroll - currentWager;
               document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "You bet " + currentWager + " on even..";
               spinResult = aSpin();
+              // document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "You bet " + currentWager + " on even..";
+              if (oddOrEven != "even") {
+                document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
+                currentWager = currentWager * 2;
 
+                if (loddOrEven == oddOrEven) {
+                  dupoddOrEven++;
+                } else if (loddOrEven != oddOrEven) {
+                  dupoddOrEven = 0;
+                }
+                if (lhighOrLow == highOrLow) {
+                  duphighOrLow++;
+                } else if (lhighOrLow != highOrLow) {
+                  duphighOrLow = 0;
+                }
+                if (lspaceColor == spaceColor) {
+                  dupspaceColor++;
+                } else if (lspaceColor != spaceColor) {
+                  dupspaceColor = 0;
+                }
+                if (dupoddOrEven >= duphighOrLow) {
+                  highestDup = dupoddOrEven;
+                } else if (duphighOrLow > dupoddOrEven) {
+                  highestDup = duphighOrLow;
+                }
+                if (dupspaceColor > highestDup) {
+                  highestDup = dupspaceColor;
+                }
+                loddOrEven = oddOrEven;
+                lhighOrLow = highOrLow;
+                lspaceColor = spaceColor;
+                dupResults = highestDup;
 
+              } else if (oddOrEven == "even") {
+                currentBankroll = currentBankroll + (currentWager * 2);
+                document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $ " + currentBankroll + " in your bankroll!";
+                currentWager = Number(document.querySelector("#wager").value);
 
+                if (loddOrEven == oddOrEven) {
+                  dupoddOrEven++;
+                } else if (loddOrEven != oddOrEven) {
+                  dupoddOrEven = 0;
+                }
+                if (lhighOrLow == highOrLow) {
+                  duphighOrLow++;
+                } else if (lhighOrLow != highOrLow) {
+                  duphighOrLow = 0;
+                }
+                if (lspaceColor == spaceColor) {
+                  dupspaceColor++;
+                } else if (lspaceColor != spaceColor) {
+                  dupspaceColor = 0;
+                }
+                if (dupoddOrEven >= duphighOrLow) {
+                  highestDup = dupoddOrEven;
+                } else if (duphighOrLow > dupoddOrEven) {
+                  highestDup = duphighOrLow;
+                }
+                if (dupspaceColor > highestDup) {
+                  highestDup = dupspaceColor;
+                }
+                loddOrEven = oddOrEven;
+                lhighOrLow = highOrLow;
+                lspaceColor = spaceColor;
+                dupResults = highestDup;
+
+              }
               spinCycle = oddOrEven;
             }
-              currentBankroll = currentBankroll + (currentWager * 2);
-              document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $ " + currentBankroll + " in your bankroll!";
-              currentWager = Number(document.querySelector("#wager").value);
           }
         } else if (oddOrEven == "even") {
-
-            if (currentBankroll < 1) {
+          if (typeof currentBankroll !== 'undefined') {
+            if (currentBankroll < 5) {
               return;
             }
-
+          }
           document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "You bet " + currentWager + " on odd..";
           spinResult = aSpin();
           if (oddOrEven == "odd") {
@@ -273,6 +375,7 @@ if (currentBankroll >= theGoal) {return;}
             dupResults = highestDup;
 
           } else if (oddOrEven != "odd") {
+            currentWager = currentWager * 2;
 
             if (loddOrEven == oddOrEven) {
               dupoddOrEven++;
@@ -302,126 +405,114 @@ if (currentBankroll >= theGoal) {return;}
             lspaceColor = spaceColor;
             dupResults = highestDup;
 
+            document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
             while (spinCycle != "odd") {
-              currentWager = currentWager * 2;
               if (currentWager > currentBankroll) {
-                return;
+                break;
               }
-              document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
               currentBankroll = currentBankroll - currentWager;
               document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "You bet " + currentWager + " on odd..";
               spinResults = aSpin();
+              // document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "You bet " + currentWager + " on odd..";
+              if (oddOrEven != "odd") {
+                document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
+                currentWager = currentWager * 2;
 
-              // if (oddOrEven != "odd") {
-              //   document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you lose.  Your current bankroll is: $" + currentBankroll;
-              //   currentWager = currentWager * 2;
-              //
-              //   if (loddOrEven == oddOrEven) {
-              //     dupoddOrEven++;
-              //   } else if (loddOrEven != oddOrEven) {
-              //     dupoddOrEven = 0;
-              //   }
-              //   if (lhighOrLow == highOrLow) {
-              //     duphighOrLow++;
-              //   } else if (lhighOrLow != highOrLow) {
-              //     duphighOrLow = 0;
-              //   }
-              //   if (lspaceColor == spaceColor) {
-              //     dupspaceColor++;
-              //   } else if (lspaceColor != spaceColor) {
-              //     dupspaceColor = 0;
-              //   }
-              //   if (dupoddOrEven >= duphighOrLow) {
-              //     highestDup = dupoddOrEven;
-              //   } else if (duphighOrLow > dupoddOrEven) {
-              //     highestDup = duphighOrLow;
-              //   }
-              //   if (dupspaceColor > highestDup) {
-              //     highestDup = dupspaceColor;
-              //   }
-              //   loddOrEven = oddOrEven;
-              //   lhighOrLow = highOrLow;
-              //   lspaceColor = spaceColor;
-              //   dupResults = highestDup;
-              //
-              // } else if (oddOrEven == "odd") {
-              //   currentBankroll = currentBankroll + (currentWager * 2);
-              //   document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $ " + currentBankroll + " in your bankroll!";
-              //   currentWager = Number(document.querySelector("#wager").value);
-              //
-              //   if (loddOrEven == oddOrEven) {
-              //     dupoddOrEven++;
-              //   } else if (loddOrEven != oddOrEven) {
-              //     dupoddOrEven = 0;
-              //   }
-              //   if (lhighOrLow == highOrLow) {
-              //     duphighOrLow++;
-              //   } else if (lhighOrLow != highOrLow) {
-              //     duphighOrLow = 0;
-              //   }
-              //   if (lspaceColor == spaceColor) {
-              //     dupspaceColor++;
-              //   } else if (lspaceColor != spaceColor) {
-              //     dupspaceColor = 0;
-              //   }
-              //   if (dupoddOrEven >= duphighOrLow) {
-              //     highestDup = dupoddOrEven;
-              //   } else if (duphighOrLow > dupoddOrEven) {
-              //     highestDup = duphighOrLow;
-              //   }
-              //   if (dupspaceColor > highestDup) {
-              //     highestDup = dupspaceColor;
-              //   }
-              //   loddOrEven = oddOrEven;
-              //   lhighOrLow = highOrLow;
-              //   lspaceColor = spaceColor;
-              //   dupResults = highestDup;
-              //
-              // }
+                if (loddOrEven == oddOrEven) {
+                  dupoddOrEven++;
+                } else if (loddOrEven != oddOrEven) {
+                  dupoddOrEven = 0;
+                }
+                if (lhighOrLow == highOrLow) {
+                  duphighOrLow++;
+                } else if (lhighOrLow != highOrLow) {
+                  duphighOrLow = 0;
+                }
+                if (lspaceColor == spaceColor) {
+                  dupspaceColor++;
+                } else if (lspaceColor != spaceColor) {
+                  dupspaceColor = 0;
+                }
+                if (dupoddOrEven >= duphighOrLow) {
+                  highestDup = dupoddOrEven;
+                } else if (duphighOrLow > dupoddOrEven) {
+                  highestDup = duphighOrLow;
+                }
+                if (dupspaceColor > highestDup) {
+                  highestDup = dupspaceColor;
+                }
+                loddOrEven = oddOrEven;
+                lhighOrLow = highOrLow;
+                lspaceColor = spaceColor;
+                dupResults = highestDup;
+
+              } else if (oddOrEven == "odd") {
+                currentBankroll = currentBankroll + (currentWager * 2);
+                document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $ " + currentBankroll + " in your bankroll!";
+                currentWager = Number(document.querySelector("#wager").value);
+
+                if (loddOrEven == oddOrEven) {
+                  dupoddOrEven++;
+                } else if (loddOrEven != oddOrEven) {
+                  dupoddOrEven = 0;
+                }
+                if (lhighOrLow == highOrLow) {
+                  duphighOrLow++;
+                } else if (lhighOrLow != highOrLow) {
+                  duphighOrLow = 0;
+                }
+                if (lspaceColor == spaceColor) {
+                  dupspaceColor++;
+                } else if (lspaceColor != spaceColor) {
+                  dupspaceColor = 0;
+                }
+                if (dupoddOrEven >= duphighOrLow) {
+                  highestDup = dupoddOrEven;
+                } else if (duphighOrLow > dupoddOrEven) {
+                  highestDup = duphighOrLow;
+                }
+                if (dupspaceColor > highestDup) {
+                  highestDup = dupspaceColor;
+                }
+                loddOrEven = oddOrEven;
+                lhighOrLow = highOrLow;
+                lspaceColor = spaceColor;
+                dupResults = highestDup;
+
+              }
               spinCycle = oddOrEven;
             }
-            currentBankroll = currentBankroll + (currentWager * 2);
-            document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "..and you win $" + (currentWager * 2) + " for a total of $ " + currentBankroll + " in your bankroll!";
-            currentWager = Number(document.querySelector("#wager").value);
           }
         }
         // document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "bankroll is " + currentBankroll + " current wager: " + currentWager;
         break;
 
       default:
-
-        if (currentBankroll < 1) {
+      if (typeof currentBankroll !== 'undefined') {
+        if (currentBankroll < 5) {
           return;
         }
-         highOrLow = "glow";
-         lhighOrLow = "flow";
-         duphighOrLow = 0;
-         spaceColor = "gred";
-         lspaceColor = "bred";
-         dupspaceColor = 0;
-         highestDup = dupoddOrEven;
-         dupResults = highestDup;
-         dupResults = minSpins();
-        theHorse();
+      }
+        myFunction();
         break;
 
     } //end switch
-
-      if (currentBankroll < 1) {
+    if (typeof currentBankroll !== 'undefined') {
+      if (currentBankroll < 5) {
         return;
       }
-if (nSpins>500){return;}
-if (currentBankroll >= theGoal) {return;}
+    }
     dupResults = minSpins();
 
   } //end while (currentBankroll > currentWager)
-} //end of theHorse
 
 
   function aSpin() {
-
-if (currentBankroll >= theGoal) {return;}
-
+    if (typeof currentBankroll !== 'undefined') {
+      if (currentBankroll < 5) {
+        return;
+      }
+    }
     randomNumber = Math.floor(Math.random() * 38) + 1;
     if (randomNumber === 37) {
       spinResult = "0";
@@ -631,18 +722,9 @@ if (currentBankroll >= theGoal) {return;}
       default:
         break;
     }
-    nSpins++;
     document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + spinResult + " " + oddOrEven + " " + highOrLow + " " + spaceColor;
-    // document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + nSpins;
-    if (nSpins>500){return;}
     return spinResult;
   }
 
-if (currentBankroll > theBankroll) {
-  document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "Your game has ended.  You have made $" + (currentBankroll-theBankroll) + " profit in " + nSpins + " turns for a total time of " + (nSpins*(Number(document.querySelector("#time").value))) + " minutes."
-} else if (currentBankroll < theBankroll) {
-  document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "Your game has ended.  You have lost your bankroll in " + nSpins + " turns for a total time of " + (nSpins*(Number(document.querySelector("#time").value))) + " minutes."
-}
-
-document.querySelector(".resultstxt").innerHTML = document.querySelector(".resultstxt").innerHTML + "<br>" + "This Roulette Martingale Calculator is a Free Beta Version.  It only bets on odd/even and has a limit of 500 spins." + "<br>" + "For the newest full version, and no limitations check out <a href='https://martingale.imail.cloud/'>https://martingale.imail.cloud/</a>" + "<br>" + "Copyright © 2022 David Hucks. All Rights Reserved."
+  // alert("done");
 }

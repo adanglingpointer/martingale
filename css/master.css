@@ -11,5 +11,13 @@ body {
 
 .headingtxt {
   font-style: italic;
-  font-size: 4vh;
+  font-size: 5vh;
+}
+
+.headingtxt2 {
+  font-size: 3.5vh;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
