@@ -6,18 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Martingale Calculator</title>
   <link rel="stylesheet" href="css/master.css">
+  <meta charset="utf-8">
 </head>
 
 <body>
   <div id="heading">
     <h1 class="headingtxt">Roulette Martingale Calculator</h1>
-    <h2 class="headingtxt2">v1.1</h2>
+    <h2 class="headingtxt2">v1.2</h2>
   </div>
   <div id="description">
     <p class="descriptiontxt">The Martingale is a strategy of betting that relies on a very simple premise: every time you lose, you double down on the next round.</p>
     <p class="descriptiontxt">Theoretically, if you have infinite money to wager, you will be guaranteed to win on the <em>n</em>th bet by doubling down each time.</p>
-    <p class="descriptiontxt">Unfortunately, money is limited, and casinos put betting limits on games.  However, this doesn't mean that the Martingale method can not still be applied--by betting in a favorable position every time.</p>
-    <p class="descriptiontxt">In the case of roulette, one can simply wait for a bet to come out thrice before betting on the opposite.  For example, if black hits three times in a row, then we can bet the minimum bet on red for the fourth spin.  This provides us the statistical benefit of the Martingale method while reducing risk of loss.</p>
+    <p class="descriptiontxt">Unfortunately, money is limited, and casinos put betting limits on games.  However, you can slightly increase your odds by betting on a favorable position from the beginning.</p>
+    <p class="descriptiontxt">In this scenario for a game of Roulette, it means waiting for an outer position (odd/even, high/low, or black/red) to hit x amount of times in a row before the first bet is placed.</p>
   </div>
   <div id="main">
     <p class="maintxt">
@@ -26,6 +27,7 @@
       <span class="nowrap"><label for="time">Minutes&nbsp;Between&nbsp;Spins:</label>&nbsp;<input type="text" id="time" name="time" value="1"></span>
       <span class="nowrap"><label for="wait">Wait&nbsp;For&nbsp;Duplicates&nbsp;Before&nbsp;Betting:</label>&nbsp;<input type="text" id="wait" name="wait" value="4"></span>
       <span class="nowrap"><label for="goal">Goal&nbsp;$:</label>&nbsp;<input type="text" id="goal" name="goal" value="500"></span>
+	  <span class="nowrap"><label for="betbeyond">Continue to bet on loss if current bankroll > original wager</label>&nbsp;<input type="checkbox" id="betbeyond" name="betbeyond"></span>
       <button type="button" name="button" onclick="myFunction()">Go</button>
     </p>
   </div>
